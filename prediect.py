@@ -12,7 +12,7 @@ def run(model_path, flow_eval_dataset):
     model.load_state_dict(torch.load(model_path))
     model.eval()
 
-    for i, flow_stack in enumerate(flow_eval_dataset):
+    for i, (flow_stack) in enumerate(flow_eval_dataset):
         flow_stack = flow_stack.to(device)
         with torch.no_grad():
             prespeed = model(flow_stack)
