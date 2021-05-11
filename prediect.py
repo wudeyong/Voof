@@ -8,7 +8,7 @@ from cnn.NVIDIA import NVIDIA
 
 def run(model_path, flow_eval_dataset):
     device = torch.device('cuda')
-    model = NVIDIA(3).to(device)
+    model = NVIDIA(2).to(device)
     model.load_state_dict(torch.load(model_path))
     model.eval()
 
