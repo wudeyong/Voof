@@ -70,7 +70,10 @@ def generate_optical_flow_dataset_pwc_by_video(mp4_path):
             flow_stack = flow_tensor
         else:
             flow_stack = torch.cat([flow_stack, flow_tensor])
-    return torch.utils.data.TensorDataset(flow_stack)
+
+    return torch.utils.data.DataLoader(flow_stack, batch_size=1,
+                                       num_workers=4, shuffle=False,
+                                       pin_memory=True)
 
 
 def save_whole_set(mp4_path, text_path, save_path):
